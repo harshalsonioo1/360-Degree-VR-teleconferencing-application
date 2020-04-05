@@ -23,5 +23,4 @@ Download the PANO's source code from the link provided.
   4)  generate tiling scheme
     if you’re using Visual Studio 2015, open the project file “/tilingDP/tilingDP.sln” and run it, otherwise you should build a new project in your IDE and copy “/tilingDP/main.cpp” into it, modify the data path at line 254/358/380 as appropriate. The tiling scheme is stored in “/tiling1004”.
   5)  run the simulation
-    set the variable calcTileVal to 0 in “/main.m”, then run “/main.m”. The results about PSPNR and bitrate consumption per user per chunk are stored in “/baselineResult” and “/PanoResult” for further analyzation. “/main.m” visualizes a comparison between baseline and Pano in Matlab window.
-
+    set the variable calcTileVal to 0 in “/main.m”, then run “/main.m”. The results about PSPNR and bitrate consumption per user per chunk are stored in “/baselineResult” and “/ourResult” for further analyzation.
