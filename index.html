@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Clappr Video360</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <body>
+        <!-- 1. Create a div where the player will be placed -->
+        <div id="player"></div>
+        <!-- 2. Create a div where the Current Frame number is displayed -->
+        <div class="frame">
+            <p id="currentFrame" style="color:red;">0</p>
+        </div>
+
+
+        <!-- 3. Include Clappr, 360 videoplayer and Math.js plugin-->
+        <script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>
+        <script src="https://cdn.rawgit.com/thiagopnts/clappr-video360/master/dist/clappr-video360.min.js"></script>
+        <script src="https://unpkg.com/mathjs@6.6.1/dist/math.min.js"></script>
+
+        <!-- 4. Include VideFrame.js file-->
+        <script type="text/javascript" src="VideoFrame.js"></script>
+
+        <!-- 5. Configure video player-->
+        <script>
+
+            // The URL to the 360 video player
+            var Video360Url = 'jellyfish.mp4';
+
+            // Initialize Variables for calculating FPS
+            var state = 0;
+            var fps = [];
+            var diff;
+            var nextFrame;
+            var currentFrame = $('#currentFrame')
+            var t = setInterval(calcFPS, 1000);
+            var current = parseInt($("p").first().text());
+            var skip = 0
+
+            // Configure your Clappr player.
+            var PlayerInstance = new Clappr.Player({
+                source: Video360Url,
+                plugins: {
+                    container: [Video360],
+                },
+                parentId: '#player',
+            });
+
+            // Setting up VideoFrame
+            var video = VideoFrame({
+                id: 'video',
+                frameRate: 29.97,
+                callback: function (frame) {
+                    currentFrame.html(frame);
+                }
+            });
+
+            // Function to listen to Players Play Event
+            PlayerInstance.listenTo(PlayerInstance, Clappr.Events.PLAYER_PLAY, function () {
+                state = 1;
+                console.log("Playing");
+                video.video.play();
+                video.listen('frame');
+            }) //Fired when player starts to play
+
+            // Function to listen to Players Pause Event
+            PlayerInstance.listenTo(PlayerInstance, Clappr.Events.PLAYER_PAUSE, function () {
+                state = 0;
+                console.log("Pause!")
+                clearInterval(t);
+                video.video.pause();
+                video.stopListen();
+                calcStd();
+            }) // Fired when player pauses
+
+            // Function to calculate Frames per second
+            function calcFPS() {
+                if (state == 1) {
+
+                    nextFrame = parseInt($("p").first().text());
+                    console.log("Frame number", $("p").first().text());
+                    diff = nextFrame - current;
+                    if (skip > 1) {
+                        fps.push(diff);
+
+                    }
+                    skip = skip + 1;
+                    current = nextFrame;
+                    console.log("Calling Frame Rate Calculator!");
+                    console.log(fps)
+                }
+            }
+            // Function to calculate Standard Deviation
+            function calcStd() {
+                console.log("Std Dev:", math.std(fps));
+            }
+
+            // Important to disable the click to pause native plugin of clappr
+            // otherwise you won't be able to use correctly the player
+            PlayerInstance.getPlugin('click_to_pause').disable();
+        </script>
+
+        <!---6.Adding buttons to the page-->
+        <p>Select your preference for teleconferencing.</p>
+        <input type="radio" name="size" onclick="check(this.value)" value="180">180<br>
+        <input type="radio" name="size" onclick="check(this.value)" value="360">360<br>
+        <br>
+        <button class="button" onclick="myFunction()">Click here to Set Up</button>
+
+        <!---7. Configuring functions for button click events-->
+
+        <script>
+            // FUNCTION TO CHANGE FROM 180 TO 360
+            function check(size) {
+                console.log("You have selected:", size)
+            }
+            // FUNCTION TO DO SETUP
+            function myFunction() {
+                console.log("SetUp!");
+            }
+        </script>
+    </body>
+</html>
