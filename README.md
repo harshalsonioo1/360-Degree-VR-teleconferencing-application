@@ -3,7 +3,8 @@
 
 We developed an android application that can be downloaded in APK format and ran in any cell-phone. It allows users to play Live-streamed or pre-downloaded 360-degree VR videos using the native player of the app conected to any Google cardboard. Another way around, just play it on the cell-phone using our full-screen player.  
 
-1 Requirements
+Requirements and Pre-requisites:
+
 Matlab(R2015a or higher) with Parallel Computing Toolbox and Image Processing Toolbox;
 Any C++ IDE(Visual Studio 2015 is recommended);
 FFMPEG(add the binary folder, e.g. “C:\Program Files\ffmpeg-20190625-dd662bb-win64-static\bin”, to system PATH.)
