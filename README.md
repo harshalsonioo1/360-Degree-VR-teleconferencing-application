@@ -10,6 +10,7 @@ FFMPEG(add the binary folder, e.g. “C:\Program Files\ffmpeg-20190625-dd662bb-w
 Python v3.6
 Java version v8 with JDK 
 PurplePill Unity3D SDK ( Can be downloaded from Google drive by clicking the link for APK file. )
+Any Android device with Android version > 5.0
 
 Pre-processing: 
 Download the PANO's source code from the link here: https://drive.google.com/open?id=1oZnoxBnemrTsmUdhkvak8KHTyQ9SRg7p
@@ -29,7 +30,6 @@ To run server-side PANO:
 The codes presented into MPD folder provides a snippet of our servers. It has webclient that we used initially to test our system. Currently, the server is loaded and running on our local machines. 
 
 To run the Client side:
-  Requirements: Any androi device with Android version > 5
   1) Download the apk file of our app through this link: https://drive.google.com/file/d/1K5cvTEQpyD8CcNHVuX7qsgCnl1Fe_H-2/view?usp=sharing
   2) Follow the demo video which can be found here: https://drive.google.com/open?id=1fAjwfCXBnIma5uSDhF_MYbDUBaIrQgX2
   
