@@ -24,3 +24,11 @@ Download the PANO's source code from the link provided.
     if you’re using Visual Studio 2015, open the project file “/tilingDP/tilingDP.sln” and run it, otherwise you should build a new project in your IDE and copy “/tilingDP/main.cpp” into it, modify the data path at line 254/358/380 as appropriate. The tiling scheme is stored in “/tiling1004”.
   5)  run the simulation
     set the variable calcTileVal to 0 in “/main.m”, then run “/main.m”. The results about PSPNR and bitrate consumption per user per chunk are stored in “/baselineResult” and “/ourResult” for further analyzation.
+    
+The codes presented into MPD folder provides a snippet of our servers. It has webclient that we used initially to test our system. Currently, the server is loaded and running on our local machines. 
+
+To run the Client side:
+  Requirements: Any androi device with Android version > 5
+  1) Download the apk file of our app through this link: https://drive.google.com/file/d/1K5cvTEQpyD8CcNHVuX7qsgCnl1Fe_H-2/view?usp=sharing
+  2) Follow the demo video which can be found here: https://drive.google.com/open?id=1fAjwfCXBnIma5uSDhF_MYbDUBaIrQgX2
+  
