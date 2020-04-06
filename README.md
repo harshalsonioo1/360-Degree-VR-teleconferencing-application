@@ -12,8 +12,9 @@ Java version v8 with JDK
 PurplePill Unity3D SDK ( Can be downloaded from Google drive by clicking the link for APK file. )
 
 Pre-processing: 
-Download the PANO's source code from the link provided. 
-  Steps for pre-processing:
+Download the PANO's source code from the link here: https://drive.google.com/open?id=1oZnoxBnemrTsmUdhkvak8KHTyQ9SRg7p
+
+To run server-side PANO:
   1)  Prepare the programs and data
     All the Matlab programs are in root folder “/”. The videos are in the folder “/videos”, the trajectory data is in two format is in “/traj” and “viewpoint”, the pre-calculated tile depth data is in “/DepthMap”. 
   2)  cut chunks
